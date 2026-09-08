@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./styles/dialog.css">
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="./styles/loading.css">
 
     <script src="./scripts/template.js"></script>
     <script src="./scripts/script.js"></script>
@@ -21,10 +22,15 @@
 </head>
 
 <body onload="init()">
+    <div id="loadingOverlay" class="loading_overlay hidden">
+        <img src="./assets/icons/pokeball.png" alt="Lädt..." class="loading_spinner">
+    </div>
+
     <header data-id="header">
         <img class="header_logo" src="./assets/icons/pokemon_logo_sw.png" alt="Pokemon Logo">
         <div class="search_container">
-            <input data-id="search_input" id="searchInput" type="text" placeholder="Search Pokemon..." onkeydown="handleSearchKeydown(event)" oninput="handleSearchInput()">
+            <input data-id="search_input" id="searchInput" type="text" placeholder="Search Pokemon..."
+                onkeydown="handleSearchKeydown(event)" oninput="handleSearchInput()">
             <button type="button" class="searchBtn" data-id="search_button" onclick="searchPokemon()"
                 aria-label="Search">Search</button>
         </div>

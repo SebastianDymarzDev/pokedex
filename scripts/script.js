@@ -8,6 +8,7 @@ const maxSearchResults = 30;
 let isSearchActive = false;
 
 async function init() {
+    showLoadingOverlay();
     initDialogScrollLock();
     await fetchAllPokemonNames();
     await loadMorePokemon();
@@ -17,9 +18,11 @@ async function loadMorePokemon() {
     const btn = document.getElementById("loadMoreBtn");
     btn.disabled = true;
     btn.textContent = "Lädt...";
+    showLoadingOverlay();
 
     await fetchAndAppendPokemon();
 
+    hideLoadingOverlay();
     btn.disabled = false;
     btn.textContent = "Mehr laden";
 }
@@ -169,9 +172,11 @@ async function loadMoreForDialog() {
     const nextBtn = document.getElementById("nextPokemonBtn");
     nextBtn.disabled = true;
     nextBtn.textContent = "...";
+    showLoadingOverlay();
 
     await fetchAndAppendPokemon();
 
+    hideLoadingOverlay();
     nextBtn.disabled = false;
     nextBtn.textContent = "→";
 }
@@ -238,11 +243,13 @@ async function performSearch(query) {
 }
 
 async function showSearchResults(matches) {
+    showLoadingOverlay();
     const pokemonDetails = await fetchPokemonDetails(matches);
     loadedPokemon = pokemonDetails;
     isSearchActive = true;
     renderPokemonList(pokemonDetails);
     toggleLoadMoreButton(false);
+    hideLoadingOverlay();
 }
 
 function showSearchError(query) {
@@ -274,4 +281,12 @@ function renderPokemonList(pokemonList) {
 function toggleLoadMoreButton(show) {
     const btn = document.getElementById("loadMoreBtn");
     btn.style.display = show ? "block" : "none";
+}
+
+function showLoadingOverlay() {
+    document.getElementById("loadingOverlay").classList.remove("hidden");
+}
+
+function hideLoadingOverlay() {
+    document.getElementById("loadingOverlay").classList.add("hidden");
 }
