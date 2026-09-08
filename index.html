@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/assets.css">
+    <link rel="stylesheet" href="./styles/dialog.css">
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/footer.css">
 
@@ -24,16 +25,22 @@
         <img class="header_logo" src="./assets/icons/pokemon_logo_sw.png" alt="Pokemon Logo">
         <div class="search_container">
             <input data-id="search_input" id="searchInput" type="text" placeholder="Search Pokemon...">
-            <button type="button" class="searchBtn" data-id="search_button" onclick="searchPokemon()" aria-label="Search">Search</button>
+            <button type="button" class="searchBtn" data-id="search_button" onclick="searchPokemon()"
+                aria-label="Search">Search</button>
         </div>
     </header>
 
     <main data-id="content">
         <section class="pokedex_grid" id="pokedexGrid"></section>
         <button type="button" class="loadMoreBtn" id="loadMoreBtn" onclick="loadMorePokemon()">
-        Load more
-    </button>
+            Load more
+        </button>
     </main>
+
+    <dialog data-id="dialog" id="pokemonDialog" class="pokemon_dialog" onclick="handleDialogClick(event)">
+        <div data-id="dialogContent" id="pokemonDialogContent"></div>
+        <button type="button" class="dialogCloseBtn" onclick="closePokemonDialog()" aria-label="Close">✕</button>
+    </dialog>
 
     <footer data-id="footer">
         <a class="footer_logo" href="./index.html"><img src="./assets/icons/pokemon_logo_sw.png" alt="Pokemon Logo"></a>
