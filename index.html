@@ -24,7 +24,7 @@
     <header data-id="header">
         <img class="header_logo" src="./assets/icons/pokemon_logo_sw.png" alt="Pokemon Logo">
         <div class="search_container">
-            <input data-id="search_input" id="searchInput" type="text" placeholder="Search Pokemon...">
+            <input data-id="search_input" id="searchInput" type="text" placeholder="Search Pokemon..." onkeydown="handleSearchKeydown(event)" oninput="handleSearchInput()">
             <button type="button" class="searchBtn" data-id="search_button" onclick="searchPokemon()"
                 aria-label="Search">Search</button>
         </div>

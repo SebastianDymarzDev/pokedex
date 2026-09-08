@@ -36,3 +36,7 @@ function getStatRowTemplate(statName, statValue) {
         </div>
     `;
 }
+
+function getSearchErrorTemplate(query) {
+    return `<p class="search_error">Kein Pokémon namens "${query}" gefunden.</p>`;
+}

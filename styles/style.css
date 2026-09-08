@@ -177,3 +177,11 @@ main {
     color: white;
     background-color: #555;
 }
+
+.search_error {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #aaaaaa;
+    padding: 48px 24px;
+    font-size: 15px;
+}
