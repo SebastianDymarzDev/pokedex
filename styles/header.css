@@ -5,7 +5,9 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(to bottom, red 0%, white 50%, black 100%);
+    background-color: var(--pokedex-black);
+    border-bottom: 3px solid var(--pokedex-red);
+    box-shadow: 0 4px 16px -4px var(--pokedex-red-glow);
     padding: 36px 24px;
 }
 
