@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,26 @@
     <link rel="stylesheet" href="./styles/standard.css">
 
 </head>
+
 <body>
-    
+    <header data-id="header">
+        <img class="header_logo" src="./assets/icons/pokemon-seeklogo.png" alt="Pokemon Logo">
+        <div class="search_container">
+            <input data-id="search_input" id="searchInput" type="text" placeholder="Search Pokemon...">
+            <button type="button" class="searchBtn" data-id="search_button" onclick="searchPokemon()" aria-label="Search"></button>
+        </div>
+    </header>
+
+
+
+    <footer data-id="footer">
+        <a class="footer_logo" href="./index.html"><img src="./assets/icons/pokemon-seeklogo.png" alt="Pokemon Logo"></a>
+        <nav class="footer_links" aria-label="Legal Links">
+            <a href="./imprint.html">Imprint</a>
+            <a href="./legal_notice.html">Legal Notice</a>
+            <a href="./privacy_policy.html">Privacy Policy</a>
+        </nav>
+    </footer>
 </body>
+
 </html>
