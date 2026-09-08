@@ -4,6 +4,25 @@
     --pokedex-red-glow: rgba(227, 53, 13, 0.4);
 }
 
+.type_fire { background-color: #ee8130; }
+.type_water { background-color: #6390f0; }
+.type_grass { background-color: #7ac74c; }
+.type_electric { background-color: #f7d02c; color: #131313; }
+.type_psychic { background-color: #f95587; }
+.type_ice { background-color: #96d9d6; color: #131313; }
+.type_dragon { background-color: #6f35fc; }
+.type_dark { background-color: #705746; }
+.type_fairy { background-color: #d685ad; }
+.type_normal { background-color: #a8a77a; }
+.type_fighting { background-color: #c22e28; }
+.type_flying { background-color: #a98ff3; }
+.type_poison { background-color: #a33ea1; }
+.type_ground { background-color: #e2bf65; color: #131313; }
+.type_rock { background-color: #b6a136; }
+.type_bug { background-color: #a6b91a; }
+.type_ghost { background-color: #735797; }
+.type_steel { background-color: #b7b7ce; color: #131313; }
+
 body {
     display: flex;
     flex-direction: column;
@@ -49,7 +68,7 @@ main {
     color: #888888;
 }
 
-.pokedex {
+.pokedex_grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 20px;
@@ -57,3 +76,53 @@ main {
     max-width: 1200px;
     margin: 0 auto;
 }
+
+.pokemon_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1f1f1f;
+    border: 2px solid #2e2e2e;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pokemon_card:hover {
+    transform: translateY(-4px);
+    border-color: var(--pokedex-red);
+    box-shadow: 0 8px 20px -8px var(--pokedex-red-glow);
+}
+
+.pokemon_image {
+    width: 100%;
+    max-width: 140px;
+    height: auto;
+}
+
+.pokemon_name {
+    margin: 8px 0 4px;
+    color: white;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.pokemon_types {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4px;
+}
+
+.type_badge {
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: white;
+    background-color: #555; /* Fallback, falls Typ unten fehlt */
+}
+

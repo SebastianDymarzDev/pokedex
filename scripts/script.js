@@ -11,7 +11,8 @@ async function loadMorePokemon() {
     btn.textContent = "Lädt...";
 
     const pokemonList = await fetchPokemonBatch(currentOffset, limit);
-    renderPokemonBatch(pokemonList);
+    const pokemonDetails = await fetchPokemonDetails(pokemonList);
+    renderPokemonBatch(pokemonDetails);
 
     currentOffset += limit;
     btn.disabled = false;
@@ -24,9 +25,34 @@ async function fetchPokemonBatch(offset, limit) {
     return data.results;
 }
 
-function renderPokemonBatch(pokemonList) {
+async function fetchPokemonDetails(pokemonList) {
+    const detailPromises = pokemonList.map(pokemon => fetchSinglePokemon(pokemon.url));
+    return Promise.all(detailPromises);
+}
+
+async function fetchSinglePokemon(url) {
+    const response = await fetch(url);
+    return response.json();
+}
+
+function renderPokemonBatch(pokemonDetails) {
     const grid = document.getElementById("pokedexGrid");
-    for (const pokemon of pokemonList) {
-        grid.innerHTML += getPokemonCardTemplate(pokemon);
+    for (const pokemon of pokemonDetails) {
+        grid.innerHTML += buildPokemonCard(pokemon);
     }
+}
+
+function buildPokemonCard(pokemon) {
+    const image = pokemon.sprites.other["official-artwork"].front_default;
+    const typesHtml = buildTypesHtml(pokemon.types);
+    return getPokemonCardTemplate(pokemon.name, image, typesHtml);
+}
+
+function buildTypesHtml(types) {
+    let typesHtml = "";
+    for (const typeEntry of types) {
+        const typeName = typeEntry.type.name;
+        typesHtml += getTypeBadgeTemplate(typeName);
+    }
+    return typesHtml;
 }
