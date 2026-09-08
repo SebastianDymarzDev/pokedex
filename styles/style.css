@@ -48,3 +48,12 @@ main {
 #searchInput::placeholder {
     color: #888888;
 }
+
+.pokedex {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 32px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}

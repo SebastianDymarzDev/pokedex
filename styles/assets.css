@@ -26,3 +26,33 @@
     transform: scale(0.95);
     filter: brightness(0.9);
 }
+
+.loadMoreBtn {
+    display: block;
+    margin: 0 auto 48px;
+    padding: 14px 32px;
+    border: 2px solid var(--pokedex-red);
+    border-radius: 999px;
+    background-color: transparent;
+    color: var(--pokedex-red);
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.loadMoreBtn:hover {
+    background-color: var(--pokedex-red);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.loadMoreBtn:active {
+    transform: translateY(0);
+}
+
+.loadMoreBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
