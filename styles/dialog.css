@@ -88,3 +88,30 @@
     background-color: var(--pokedex-red);
     border-radius: 999px;
 }
+
+.dialog_nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+.dialogNavBtn {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.dialogNavBtn:hover:not(:disabled) {
+    background-color: var(--pokedex-red);
+}
+
+.dialogNavBtn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}

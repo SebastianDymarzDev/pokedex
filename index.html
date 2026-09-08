@@ -40,6 +40,12 @@
     <dialog data-id="dialog" id="pokemonDialog" class="pokemon_dialog" onclick="handleDialogClick(event)">
         <div data-id="dialogContent" id="pokemonDialogContent"></div>
         <button type="button" class="dialogCloseBtn" onclick="closePokemonDialog()" aria-label="Close">✕</button>
+        <div class="dialog_nav">
+            <button type="button" class="dialogNavBtn" id="prevPokemonBtn" onclick="showPreviousPokemon()"
+                aria-label="Previous Pokemon">←</button>
+            <button type="button" class="dialogNavBtn" id="nextPokemonBtn" onclick="showNextPokemon()"
+                aria-label="Next Pokemon">→</button>
+        </div>
     </dialog>
 
     <footer data-id="footer">
