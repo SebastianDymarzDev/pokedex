@@ -5,6 +5,7 @@ let currentDialogIndex = null;
 let allPokemonNames = [];
 let searchDebounceTimer = null;
 const maxSearchResults = 30;
+let isSearchActive = false;
 
 async function init() {
     initDialogScrollLock();
@@ -100,7 +101,7 @@ function showPreviousPokemon() {
 }
 
 async function showNextPokemon() {
-    if (currentDialogIndex === loadedPokemon.length - 1) {
+    if (currentDialogIndex === loadedPokemon.length - 1 && !isSearchActive) {
         await loadMoreForDialog();
     }
 
@@ -111,7 +112,11 @@ async function showNextPokemon() {
 
 function updateNavButtonState() {
     const prevBtn = document.getElementById("prevPokemonBtn");
+    const nextBtn = document.getElementById("nextPokemonBtn");
+    const isLastItem = currentDialogIndex === loadedPokemon.length - 1;
+
     prevBtn.disabled = currentDialogIndex === 0;
+    nextBtn.disabled = isLastItem && isSearchActive;
 }
 
 function findPokemonIndexById(pokemonId) {
@@ -167,6 +172,7 @@ async function loadMoreForDialog() {
 
     await fetchAndAppendPokemon();
 
+    nextBtn.disabled = false;
     nextBtn.textContent = "→";
 }
 
@@ -224,16 +230,19 @@ async function performSearch(query) {
 
     if (matches.length === 0) {
         showSearchError(query);
-        searchBtn.disabled = false;
-        return;
+    } else {
+        await showSearchResults(matches);
     }
 
+    searchBtn.disabled = false;
+}
+
+async function showSearchResults(matches) {
     const pokemonDetails = await fetchPokemonDetails(matches);
     loadedPokemon = pokemonDetails;
+    isSearchActive = true;
     renderPokemonList(pokemonDetails);
     toggleLoadMoreButton(false);
-
-    searchBtn.disabled = false;
 }
 
 function showSearchError(query) {
@@ -246,6 +255,7 @@ function showSearchError(query) {
 async function resetToDefaultList() {
     currentOffset = 0;
     loadedPokemon = [];
+    isSearchActive = false;
     clearPokedexGrid();
     toggleLoadMoreButton(true);
     await loadMorePokemon();
