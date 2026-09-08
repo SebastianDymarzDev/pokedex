@@ -45,7 +45,8 @@ function renderPokemonBatch(pokemonDetails) {
 function buildPokemonCard(pokemon) {
     const image = pokemon.sprites.other["official-artwork"].front_default;
     const typesHtml = buildTypesHtml(pokemon.types);
-    return getPokemonCardTemplate(pokemon.name, image, typesHtml);
+    const primaryType = pokemon.types[0].type.name;
+    return getPokemonCardTemplate(pokemon.name, image, typesHtml, primaryType);
 }
 
 function buildTypesHtml(types) {
