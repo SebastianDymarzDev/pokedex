@@ -88,7 +88,7 @@ function openPokemonDialog(pokemonId) {
 
     const dialog = document.getElementById("pokemonDialog");
     dialog.showModal();
-    document.body.style.overflow = "hidden";
+    lockPageScroll();
 }
 
 function showPokemonAtIndex(index) {
@@ -150,7 +150,7 @@ function closePokemonDialog() {
 function initDialogScrollLock() {
     const dialog = document.getElementById("pokemonDialog");
     dialog.addEventListener("close", () => {
-        document.body.style.overflow = "";
+        unlockPageScroll();
     });
 }
 
@@ -321,4 +321,14 @@ function handleCardKeydown(event, pokemonId) {
 
 function formatPokemonNumber(id) {
     return "#" + String(id).padStart(3, "0");
+}
+
+function lockPageScroll() {
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+}
+
+function unlockPageScroll() {
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
 }

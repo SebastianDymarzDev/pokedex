@@ -19,4 +19,25 @@
         align-items: center;
         gap: 8px;
     }
+
+    .pokemon_dialog {
+        padding: 20px;
+    }
+
+    .pokemon_detail_image {
+        max-width: 140px;
+    }
+
+    .pokemon_detail_meta {
+        margin: 12px 0;
+    }
+
+    .pokemon_detail_stats {
+        margin-top: 12px;
+        gap: 6px;
+    }
+
+    .dialog_nav {
+        margin-top: 16px;
+    }
 }
