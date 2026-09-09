@@ -207,10 +207,18 @@ async function searchPokemon() {
     }
 
     if (query.length < minSearchLength) {
+        showMinLengthError();
         return;
     }
 
     await performSearch(query);
+}
+
+function showMinLengthError() {
+    clearPokedexGrid();
+    const grid = document.getElementById("pokedexGrid");
+    grid.innerHTML = getMinLengthErrorTemplate(minSearchLength);
+    toggleLoadMoreButton(false);
 }
 
 function getMatchingNames(query) {

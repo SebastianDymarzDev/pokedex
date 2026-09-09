@@ -43,3 +43,7 @@ function getStatRowTemplate(statName, statValue) {
 function getSearchErrorTemplate(query) {
     return `<p data-id="not-found" class="search_error">Kein Pokémon namens "${query}" gefunden.</p>`;
 }
+
+function getMinLengthErrorTemplate(minLength) {
+    return `<p data-id="min-length-error" class="search_error">Bitte mindestens ${minLength} Buchstaben eingeben.</p>`;
+}
