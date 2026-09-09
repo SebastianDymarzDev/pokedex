@@ -1,6 +1,7 @@
-function getPokemonCardTemplate(id, name, image, typesHtml, primaryType) {
+function getPokemonCardTemplate(id, name, image, typesHtml, primaryType, displayName) {
     return `
-        <div data-id="card" class="pokemon_card type_bg_${primaryType}" role="button" onclick="openPokemonDialog(${id})">
+        <div data-id="card" class="pokemon_card type_bg_${primaryType}" role="button" tabindex="0"
+            aria-label="${displayName} anzeigen" onclick="openPokemonDialog(${id})" onkeydown="handleCardKeydown(event, ${id})">
             <img data-id="card-image" class="pokemon_image" src="${image}" alt="${name}">
             <p class="pokemon_name">${name}</p>
             <div class="pokemon_types">${typesHtml}</div>

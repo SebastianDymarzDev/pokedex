@@ -63,7 +63,12 @@ function buildPokemonCard(pokemon) {
     const image = pokemon.sprites.other["official-artwork"].front_default;
     const typesHtml = buildTypesHtml(pokemon.types);
     const primaryType = pokemon.types[0].type.name;
-    return getPokemonCardTemplate(pokemon.id, pokemon.name, image, typesHtml, primaryType);
+    const displayName = capitalize(pokemon.name);
+    return getPokemonCardTemplate(pokemon.id, pokemon.name, image, typesHtml, primaryType, displayName);
+}
+
+function capitalize(name) {
+    return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
 function buildTypesHtml(types) {
@@ -289,4 +294,11 @@ function showLoadingOverlay() {
 
 function hideLoadingOverlay() {
     document.getElementById("loadingOverlay").classList.add("hidden");
+}
+
+function handleCardKeydown(event, pokemonId) {
+    if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openPokemonDialog(pokemonId);
+    }
 }
