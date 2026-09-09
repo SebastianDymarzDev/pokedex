@@ -316,7 +316,7 @@ function renderPokemonList(pokemonList) {
 
 function toggleLoadMoreButton(show) {
     const btn = document.getElementById("loadMoreBtn");
-    btn.style.display = show ? "block" : "none";
+    btn.classList.toggle("hidden", !show);
 }
 
 function showLoadingOverlay() {
@@ -339,11 +339,11 @@ function formatPokemonNumber(id) {
 }
 
 function lockPageScroll() {
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
+    document.body.classList.add("no-scroll");
+    document.documentElement.classList.add("no-scroll");
 }
 
 function unlockPageScroll() {
-    document.body.style.overflow = "";
-    document.documentElement.style.overflow = "";
+    document.body.classList.remove("no-scroll");
+    document.documentElement.classList.remove("no-scroll");
 }
