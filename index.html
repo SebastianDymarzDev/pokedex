@@ -30,27 +30,27 @@
     <header data-id="header">
         <img class="header_logo" src="./assets/icons/pokemon_logo_sw.png" alt="Pokemon Logo">
         <div class="search_container">
-            <input data-id="search_input" id="searchInput" type="text" placeholder="Search Pokemon..."
+            <input data-id="search-input" id="searchInput" type="text" placeholder="Search Pokemon..."
                 onkeydown="handleSearchKeydown(event)" oninput="handleSearchInput()">
-            <button type="button" class="searchBtn" data-id="search_button" onclick="searchPokemon()"
+            <button type="button" class="searchBtn" data-id="search-button" onclick="searchPokemon()"
                 aria-label="Search">Search</button>
         </div>
     </header>
 
     <main data-id="content">
         <section class="pokedex_grid" id="pokedexGrid"></section>
-        <button type="button" class="loadMoreBtn" id="loadMoreBtn" onclick="loadMorePokemon()">
+        <button data-id="load-more-button" type="button" class="loadMoreBtn" id="loadMoreBtn" onclick="loadMorePokemon()">
             Load more
         </button>
     </main>
 
     <dialog data-id="dialog" id="pokemonDialog" class="pokemon_dialog" onclick="handleDialogClick(event)">
-        <div data-id="dialogContent" id="pokemonDialogContent"></div>
-        <button type="button" class="dialogCloseBtn" onclick="closePokemonDialog()" aria-label="Close">✕</button>
+        <div data-id="overlay-pokemon-name" id="pokemonDialogContent"></div>
+        <button data-id="close-dialog-button" type="button" class="dialogCloseBtn" onclick="closePokemonDialog()" aria-label="Close">✕</button>
         <div class="dialog_nav">
-            <button type="button" class="dialogNavBtn" id="prevPokemonBtn" onclick="showPreviousPokemon()"
+            <button data-id="prev-button" type="button" class="dialogNavBtn" id="prevPokemonBtn" onclick="showPreviousPokemon()"
                 aria-label="Previous Pokemon">←</button>
-            <button type="button" class="dialogNavBtn" id="nextPokemonBtn" onclick="showNextPokemon()"
+            <button data-id="next-button" type="button" class="dialogNavBtn" id="nextPokemonBtn" onclick="showNextPokemon()"
                 aria-label="Next Pokemon">→</button>
         </div>
     </dialog>

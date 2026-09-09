@@ -1,7 +1,7 @@
 function getPokemonCardTemplate(id, name, image, typesHtml, primaryType) {
     return `
-        <div class="pokemon_card type_bg_${primaryType}" onclick="openPokemonDialog(${id})">
-            <img class="pokemon_image" src="${image}" alt="${name}">
+        <div data-id="card" class="pokemon_card type_bg_${primaryType}" role="button" onclick="openPokemonDialog(${id})">
+            <img data-id="card-image" class="pokemon_image" src="${image}" alt="${name}">
             <p class="pokemon_name">${name}</p>
             <div class="pokemon_types">${typesHtml}</div>
         </div>
@@ -14,7 +14,7 @@ function getTypeBadgeTemplate(typeName) {
 
 function getPokemonDetailTemplate(name, image, typesHtml, statsHtml, height, weight) {
     return `
-        <img class="pokemon_detail_image" src="${image}" alt="${name}">
+        <img data-id="dialog-image" class="pokemon_detail_image" src="${image}" alt="${name}">
         <h2 class="pokemon_detail_name">${name}</h2>
         <div class="pokemon_types">${typesHtml}</div>
         <div class="pokemon_detail_meta">
@@ -38,5 +38,5 @@ function getStatRowTemplate(statName, statValue) {
 }
 
 function getSearchErrorTemplate(query) {
-    return `<p class="search_error">Kein Pokémon namens "${query}" gefunden.</p>`;
+    return `<p data-id="not-found" class="search_error">Kein Pokémon namens "${query}" gefunden.</p>`;
 }
