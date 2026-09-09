@@ -29,9 +29,14 @@ async function loadMorePokemon() {
 }
 
 async function fetchPokemonBatch(offset, limit) {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`);
-    const data = await response.json();
-    return data.results;
+    try {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`);
+        const data = await response.json();
+        return data.results;
+    } catch (error) {
+        console.error("Fehler beim Laden der Pokemon-Liste:", error);
+        return [];
+    }
 }
 
 async function fetchPokemonDetails(pokemonList) {
@@ -40,17 +45,27 @@ async function fetchPokemonDetails(pokemonList) {
 }
 
 async function fetchAllPokemonNames() {
-    const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=2000");
-    const data = await response.json();
-    allPokemonNames = data.results;
+    try {
+        const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=2000");
+        const data = await response.json();
+        allPokemonNames = data.results;
+    } catch (error) {
+        console.error("Fehler beim Laden aller Pokemon-Namen:", error);
+        allPokemonNames = [];
+    }
 }
 
 async function fetchSinglePokemon(url) {
-    const response = await fetch(url);
-    if (!response.ok) {
-        throw new Error("Pokemon not found");
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error("Pokemon not found");
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Fehler beim Laden eines Pokemon:", error);
+        return null;
     }
-    return response.json();
 }
 
 function renderPokemonBatch(pokemonDetails) {
