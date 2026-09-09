@@ -1,8 +1,12 @@
 @media screen and (max-width: 480px) {
     footer {
+        height: auto;
+        padding: 16px 24px;
+    }
+
+    .footer_content {
         flex-direction: column;
         justify-content: center;
-        height: auto;
         gap: 16px;
     }
 
