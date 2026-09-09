@@ -5,6 +5,7 @@ let currentDialogIndex = null;
 let allPokemonNames = [];
 let searchDebounceTimer = null;
 const maxSearchResults = 30;
+const minSearchLength = 3;
 let isSearchActive = false;
 
 async function init() {
@@ -202,6 +203,10 @@ async function searchPokemon() {
 
     if (query === "") {
         await resetToDefaultList();
+        return;
+    }
+
+    if (query.length < minSearchLength) {
         return;
     }
 
