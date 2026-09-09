@@ -22,3 +22,13 @@ header {
     height: auto;
     display: block;
 }
+
+.site_title {
+    margin-top: 16px;
+    color: var(--pokedex-red);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 0 12px var(--pokedex-red-glow);
+}
