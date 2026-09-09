@@ -64,7 +64,8 @@ function buildPokemonCard(pokemon) {
     const typesHtml = buildTypesHtml(pokemon.types);
     const primaryType = pokemon.types[0].type.name;
     const displayName = capitalize(pokemon.name);
-    return getPokemonCardTemplate(pokemon.id, pokemon.name, image, typesHtml, primaryType, displayName);
+    const formattedNumber = formatPokemonNumber(pokemon.id);
+    return getPokemonCardTemplate(pokemon.id, pokemon.name, image, typesHtml, primaryType, displayName, formattedNumber);
 }
 
 function capitalize(name) {
@@ -156,7 +157,9 @@ function buildPokemonDetail(pokemon) {
     const image = pokemon.sprites.other["official-artwork"].front_default;
     const typesHtml = buildTypesHtml(pokemon.types);
     const statsHtml = buildStatsHtml(pokemon.stats);
-    return getPokemonDetailTemplate(pokemon.name, image, typesHtml, statsHtml, pokemon.height, pokemon.weight);
+    const displayName = capitalize(pokemon.name);
+    const formattedNumber = formatPokemonNumber(pokemon.id);
+    return getPokemonDetailTemplate(displayName, image, typesHtml, statsHtml, pokemon.height, pokemon.weight, formattedNumber);
 }
 
 function buildStatsHtml(stats) {
@@ -301,4 +304,8 @@ function handleCardKeydown(event, pokemonId) {
         event.preventDefault();
         openPokemonDialog(pokemonId);
     }
+}
+
+function formatPokemonNumber(id) {
+    return "#" + String(id).padStart(3, "0");
 }

@@ -1,7 +1,8 @@
-function getPokemonCardTemplate(id, name, image, typesHtml, primaryType, displayName) {
+function getPokemonCardTemplate(id, name, image, typesHtml, primaryType, displayName, formattedNumber) {
     return `
         <div data-id="card" class="pokemon_card type_bg_${primaryType}" role="button" tabindex="0"
             aria-label="${displayName} anzeigen" onclick="openPokemonDialog(${id})" onkeydown="handleCardKeydown(event, ${id})">
+            <span data-id="card-number" class="pokemon_number">${formattedNumber}</span>
             <img data-id="card-image" class="pokemon_image" src="${image}" alt="${name}">
             <p class="pokemon_name">${name}</p>
             <div class="pokemon_types">${typesHtml}</div>
@@ -13,9 +14,10 @@ function getTypeBadgeTemplate(typeName) {
     return `<span class="type_badge type_${typeName}">${typeName}</span>`;
 }
 
-function getPokemonDetailTemplate(name, image, typesHtml, statsHtml, height, weight) {
+function getPokemonDetailTemplate(name, image, typesHtml, statsHtml, height, weight, formattedNumber) {
     return `
         <img data-id="dialog-image" class="pokemon_detail_image" src="${image}" alt="${name}">
+        <span data-id="dialog-number" class="pokemon_detail_number">${formattedNumber}</span>
         <h2 class="pokemon_detail_name">${name}</h2>
         <div class="pokemon_types">${typesHtml}</div>
         <div class="pokemon_detail_meta">
